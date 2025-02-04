@@ -5,11 +5,7 @@ import (
 	"strings"
 )
 
-type Options struct {
-	CaseSensitive bool
-}
-
-func Distance(s1 string, s2 string, options Options) float64 {
+func Distance(s1 string, s2 string, caseSensitive bool) float64 {
 	m := 0
 
 	// Exit early if either are empty.
@@ -17,18 +13,13 @@ func Distance(s1 string, s2 string, options Options) float64 {
 		return 0
 	}
 
-	// Set default values for options if they are not provided.
-	if !options.CaseSensitive {
-		options.CaseSensitive = true
-	}
-
 	// Convert to upper if case-sensitive is false.
-	if !options.CaseSensitive {
+	if !caseSensitive {
 		s1 = strings.ToUpper(s1)
 		s2 = strings.ToUpper(s2)
 	}
 
-	// Exit early if they're an exact match.
+	// Exit early if they're an exact match..
 	if s1 == s2 {
 		return 1
 	}
