@@ -21,11 +21,7 @@ import (
 )
 
 func main() {
-	options := jaro.Options{
-		CaseSensitive: false,
-	}
-
-	distance := jaro.Distance("Hello", "Hello", options)
+	distance := jaro.Distance("Hello", "Hello", true)
 	log.Println(distance) // 1
 }
 
